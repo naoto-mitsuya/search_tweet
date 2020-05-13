@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('twitter', 'TwitterController@index');
+Route::get('twitter', 'TwitterController@search');
 
 Auth::routes();
 

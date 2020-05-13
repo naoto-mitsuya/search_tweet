@@ -18,4 +18,21 @@ class TwitterController extends Controller
             "result" => $result
         ]);
     }
+
+    public function search(Request $request)
+    {
+        // 検索文字列
+        $keyword = $request['keyword'];
+
+        // APIに送る検索文字列
+        $query = $keyword;
+
+        // ツイートを5件取得
+        $result = \Twitter::get('search/tweets', array('q' => $query, 'count' => 5))->statuses;
+
+        // ViewのTwitter.blade.phpに渡す
+        return view('twitter', [
+            "result" => $result
+        ]);
+    }
 }

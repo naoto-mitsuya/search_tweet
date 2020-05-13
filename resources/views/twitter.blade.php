@@ -1,8 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container">
+        {{-- 以下を追加 --}}
+        {!! Form::open(['action' => 'TwitterController@search', 'method' => 'get']) !!}
+            <div class="d-block">
+                <h5 class="d-block">
+                    {!! Form::label('keyword_txt', 'キーワード', ['class' => 'control-label']) !!}
+                </h5>
+                <div class="d-block">
+                    {!! Form::text('keyword', '', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="d-block">
+                {!! Form::submit('検索', ['class' => 'btn btn-success']) !!}
+            </div>
+            <br>
+        {{ Form::close() }}
+
 　　　   {{-- コントローラーで取得した$resultをforeachで回す --}}
         @foreach ($result as $tweet)
             <div class="card mb-2">
